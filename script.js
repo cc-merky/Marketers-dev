@@ -159,28 +159,24 @@ function createCard() {
   };
 
   // Send the card data to the Google Apps Script
-  fetch("https://script.google.com/macros/s/AKfycby6BLGKS-FKMrXEhmcYmWPZ9E-3VNkROFrkdlsQvlGEBXKZ8D3D0fwUQMLOA0GahIE/exec", {
-    method: "POST",
-    body: JSON.stringify(cardData),
-    headers: {
-      "Content-Type": "application/json",
-    },
+  fetch('https://script.google.com/macros/s/AKfycby6BLGKS-FKMrXEhmcYmWPZ9E-3VNkROFrkdlsQvlGEBXKZ8D3D0fwUQMLOA0GahIE/exec', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    // Your request data here
+  }),
+  mode: 'cors', // Make sure you set CORS mode
+})
+  .then(response => response.json())
+  .then(data => {
+    // Handle the response data
   })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      if (data.success) {
-        // Data successfully submitted to Google Sheets
-        alert("Data submitted successfully!");
-      } else {
-        // Handle any error
-        alert("Error submitting data.");
-      }
-    })
-    .catch(function (error) {
-      console.error("Error:", error);
-    });
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
 }
 
 // Sample function to generate a user ID (You can replace this with your logic)
