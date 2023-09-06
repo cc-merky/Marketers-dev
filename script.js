@@ -144,6 +144,43 @@ function createCard() {
   // Hide the form
   const form = document.querySelector("form.card-form");
   form.style.display = "none";
+
+
+
+  // Create an object with the card data
+  var cardData = {
+    userId: userId,
+    fullName: fullName,
+    phoneNumber: phoneNumber,
+    email: email,
+    state: state,
+    lga: lga,
+    lcda: lcda,
+  };
+
+  // Send the card data to the Google Apps Script
+  fetch("https://script.google.com/macros/s/AKfycby6BLGKS-FKMrXEhmcYmWPZ9E-3VNkROFrkdlsQvlGEBXKZ8D3D0fwUQMLOA0GahIE/exec", {
+    method: "POST",
+    body: JSON.stringify(cardData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      if (data.success) {
+        // Data successfully submitted to Google Sheets
+        alert("Data submitted successfully!");
+      } else {
+        // Handle any error
+        alert("Error submitting data.");
+      }
+    })
+    .catch(function (error) {
+      console.error("Error:", error);
+    });
 }
 
 // Sample function to generate a user ID (You can replace this with your logic)
@@ -186,3 +223,4 @@ function downloadCard() {
 
 // Event listener for the download button
 document.getElementById("downloadButton").addEventListener("click", downloadCard);
+
