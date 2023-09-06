@@ -186,39 +186,3 @@ function downloadCard() {
 
 // Event listener for the download button
 document.getElementById("downloadButton").addEventListener("click", downloadCard);
-
-// Create an object containing the card data
-var cardData = {
-  fullName: fullName,
-  phoneNumber: phoneNumber,
-  email: email,
-  state: state,
-  lga: lga,
-  lcda: lcda,
-  userId: userId
-};
-
-// Send a POST request to the Google Apps Script web app URL
-fetch('https://script.google.com/macros/s/AKfycbx5R-tf-s8v-cwFQs42OS6suLPDG68bdprBEV41ug/dev', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(cardData)
-})
-  .then(response => {
-    // Handle the response if needed
-    console.log('Data submitted successfully');
-  })
-  .catch(error => {
-    // Handle errors if any
-    console.error('Error submitting data:', error);
-  });
-
-  var fullName = document.querySelector('input[name="fullName"]').value;
-  var phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
-  var email = document.querySelector('input[name="email"]').value;
-  var state = document.getElementById("stateDropdown").value;
-  var lga = document.getElementById("lgaDropdown").value;
-  var lcda = document.getElementById("lcdaDropdown").value;
-  var userId = generateUserId(fullName); 
