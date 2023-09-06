@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-image">  
+        <h2 class="card-heading">
+          Get started
+          <small>Make your market sell</small>
+        </h2>
+      </div>
+      <form class="card-form">
+        <div class="input">
+          <input type="text" class="input-field" name="fullName" required />
+          <label class="input-label">Full name</label>
+        </div>
+        <div class="input">
+          <input type="text" class="input-field" name="phoneNumber" required />
+          <label class="input-label">Phone number</label>
+        </div>
+        <div class="input-optional">
+          <input type="email" class="input-field-optional" name="email" />
+          <label class="input-label-optional">Email (Optional)</label>
+        </div>
+        <div class="input">
+            <select class="input-field" id="stateDropdown" required onchange="showLGAInput()">
+              <option value="" disabled selected></option>
+              <!-- State options will be populated using JavaScript -->
+            </select>
+            <label class="input-label">State</label>
+          </div>
+          <div class="input" id="lgaInputContainer" style="display: none;">
+            <select class="input-field" required id="lgaDropdown">
+              <option value="" disabled selected></option>
+              <!-- LGA options will be populated using JavaScript -->
+            </select>
+            <label class="input-label"></label>
+          </div>
+          <div class="input" id="lcdaInputContainer" style="display: none;">
+            <select class="input-field" required id="lcdaDropdown">
+              <option value="" disabled selected></option>
+              <!-- LCDA options will be populated using JavaScript -->
+            </select>
+            <label class="input-label"></label>
+          </div>
+        <div class="action">
+          <button class="action-button">Join</button>
+        </div>
+      </form>
+      <div id="cardDisplay"></div>
+      <button id="downloadButton" class="action-button" style="display: none;">Download Card as Image</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
